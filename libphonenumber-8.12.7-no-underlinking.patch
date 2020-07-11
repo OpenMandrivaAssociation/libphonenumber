@@ -1,0 +1,20 @@
+diff -up libphonenumber-8.12.7/cpp/CMakeLists.txt.1~ libphonenumber-8.12.7/cpp/CMakeLists.txt
+--- libphonenumber-8.12.7/cpp/CMakeLists.txt.1~	2020-07-02 08:40:20.000000000 +0200
++++ libphonenumber-8.12.7/cpp/CMakeLists.txt	2020-07-11 02:47:54.981750109 +0200
+@@ -400,6 +400,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
+   # The geocoder doesn't use RE2 so there is no reason not to build a shared
+   # library for it.
+   add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
++  target_link_libraries(geocoding-shared phonenumber-shared)
+   add_dependencies (geocoding-shared generate_geocoding_data)
+   set_target_properties (geocoding-shared
+     PROPERTIES
+@@ -659,7 +659,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
+     geocoding_test_program
+     "test/phonenumbers/geocoding/geocoding_test_program.cc"
+   )
+-  target_link_libraries (geocoding_test_program geocoding phonenumber)
++  target_link_libraries (geocoding_test_program geocoding phonenumber ${ICU_LIB})
+ endif ()
+ 
+ # Build an RPM
