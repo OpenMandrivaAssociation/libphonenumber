@@ -19,7 +19,7 @@ BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	protobuf-compiler
 BuildRequires:	pkgconfig(re2)
-BuildRequires:	cmake(GTest)
+BuildRequires:	pkgconfig(gtest)
 %if %{with java}
 BuildRequires:	jdk-current
 BuildRequires:	ant
