@@ -7,7 +7,7 @@
 
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
-Version:	8.12.13
+Version:	8.12.15
 Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
@@ -26,37 +26,38 @@ BuildRequires:	ant
 %endif
 
 %description
-Library for parsing, formatting, and validating international phone numbers
+Library for parsing, formatting, and validating international phone numbers.
 
 %package -n %{libphonenumber}
 Summary:	Library for parsing phone numbers
 Group:		System/Libraries
 
 %description -n %{libphonenumber}
-Library for parsing phone numbers
+Library for parsing phone numbers.
 
 %package -n %{libgeocoding}
 Summary:	Library for geo-coding phone numbers
 Group:		System/Libraries
 
 %description -n %{libgeocoding}
-Library for geo-coding phone numbers
+Library for geo-coding phone numbers.
 
 %package -n %{devphonenumber}
 Summary:	Development files for the library for parsing phone numbers
 Group:		Development/C++ and C
 Requires:	%{libphonenumber} = %{EVRD}
 Requires:	%{libgeocoding} = %{EVRD}
+Provides:	phonenumber-devel = %{EVRD}
 
 %description -n %{devphonenumber}
-Development files for the library for parsing phone numbers
+Development files for the library for parsing phone numbers.
 
 %package java
 Summary:	The phone number parsing library for Java
 Group:		Development/Java
 
 %description java
-The phone number parsing library for Java
+The phone number parsing library for Java.
 
 %prep
 %autosetup -p1
