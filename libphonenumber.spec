@@ -8,7 +8,7 @@
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
 Version:	8.12.15
-Release:	1
+Release:	2
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 Patch1:		libphonenumber-8.12.7-optional-static-libs.patch
@@ -47,6 +47,7 @@ Summary:	Development files for the library for parsing phone numbers
 Group:		Development/C++ and C
 Requires:	%{libphonenumber} = %{EVRD}
 Requires:	%{libgeocoding} = %{EVRD}
+Requires:	pkgconfig(protobuf)
 Provides:	phonenumber-devel = %{EVRD}
 
 %description -n %{devphonenumber}
