@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	protobuf-compiler
 BuildRequires:	pkgconfig(re2)
 BuildRequires:	pkgconfig(gtest)
+BuildRequires:	pkgconfig(absl_strings)
 %if %{with java}
 BuildRequires:	jdk-current
 BuildRequires:	ant
