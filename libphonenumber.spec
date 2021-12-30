@@ -12,6 +12,7 @@ Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 Patch1:		libphonenumber-8.12.7-optional-static-libs.patch
+Patch2:		libphonenumber-8.12.40-system-absl.patch
 License:	Apache 2.0
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(icu-uc)

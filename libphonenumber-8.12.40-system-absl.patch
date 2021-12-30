@@ -1,0 +1,46 @@
+diff -up libphonenumber-8.12.40/cpp/CMakeLists.txt.3~ libphonenumber-8.12.40/cpp/CMakeLists.txt
+--- libphonenumber-8.12.40/cpp/CMakeLists.txt.3~	2021-12-30 03:28:48.109639544 +0100
++++ libphonenumber-8.12.40/cpp/CMakeLists.txt	2021-12-30 03:31:59.108635135 +0100
+@@ -18,7 +18,7 @@ cmake_minimum_required (VERSION 3.11)
+ 
+ # Pick the C++ standard to compile with.
+ # Abseil currently supports C++11, C++14, and C++17.
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ project (libphonenumber)
+@@ -33,6 +33,11 @@ if (32BIT)
+   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
+ endif ()
+ 
++option (USE_SYSTEM_ABSL "Use system absl" ON)
++if (USE_SYSTEM_ABSL)
++  find_package(absl REQUIRED)
++endif ()
++
+ # Helper functions dealing with finding libraries and programs this library
+ # depends on.
+ 
+diff -up libphonenumber-8.12.40/tools/cpp/CMakeLists.txt.3~ libphonenumber-8.12.40/tools/cpp/CMakeLists.txt
+--- libphonenumber-8.12.40/tools/cpp/CMakeLists.txt.3~	2021-12-23 12:14:18.000000000 +0100
++++ libphonenumber-8.12.40/tools/cpp/CMakeLists.txt	2021-12-30 03:28:48.109639544 +0100
+@@ -28,6 +28,10 @@ project (generate_geocoding_data)
+ include (gtest.cmake)
+ include (FetchContent)
+ 
++option (USE_SYSTEM_ABSL "Use system absl" ON)
++if (USE_SYSTEM_ABSL)
++	find_package(absl REQUIRED)
++else ()
+ # Downloading the abseil sources.
+ FetchContent_Declare(
+     abseil-cpp
+@@ -49,6 +53,7 @@ endif ()
+ # https://github.com/abseil/abseil-cpp/issues/225
+ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+ add_subdirectory(${abseil-cpp_SOURCE_DIR} ${abseil-cpp_BINARY_DIR})
++endif ()
+ 
+ find_or_build_gtest ()
+ set (
