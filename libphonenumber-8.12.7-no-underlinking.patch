@@ -1,6 +1,6 @@
-diff -up libphonenumber-8.12.47/cpp/CMakeLists.txt.1~ libphonenumber-8.12.47/cpp/CMakeLists.txt
---- libphonenumber-8.12.47/cpp/CMakeLists.txt.1~	2022-04-20 06:28:38.000000000 +0200
-+++ libphonenumber-8.12.47/cpp/CMakeLists.txt	2022-04-28 16:01:54.251321079 +0200
+diff -up libphonenumber-8.12.49/cpp/CMakeLists.txt.1~ libphonenumber-8.12.49/cpp/CMakeLists.txt
+--- libphonenumber-8.12.49/cpp/CMakeLists.txt.1~	2022-05-26 16:40:49.000000000 +0200
++++ libphonenumber-8.12.49/cpp/CMakeLists.txt	2022-06-06 13:23:47.967434226 +0200
 @@ -412,6 +412,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
    # The geocoder doesn't use RE2 so there is no reason not to build a shared
    # library for it.
@@ -9,12 +9,12 @@ diff -up libphonenumber-8.12.47/cpp/CMakeLists.txt.1~ libphonenumber-8.12.47/cpp
    add_dependencies (geocoding-shared generate_geocoding_data)
    set_target_properties (geocoding-shared
      PROPERTIES
-@@ -677,7 +678,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
+@@ -676,7 +677,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
      geocoding_test_program
      "test/phonenumbers/geocoding/geocoding_test_program.cc"
    )
--  target_link_libraries (geocoding_test_program geocoding phonenumber absl::node_hash_set)
-+  target_link_libraries (geocoding_test_program geocoding phonenumber absl::node_hash_set ${ICU_LIB})
+-  target_link_libraries (geocoding_test_program geocoding phonenumber)
++  target_link_libraries (geocoding_test_program geocoding phonenumber ${ICU_LIB})
  endif ()
  
  # Build an RPM

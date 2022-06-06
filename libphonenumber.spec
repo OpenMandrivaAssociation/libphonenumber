@@ -7,7 +7,7 @@
 
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
-Version:	8.12.47
+Version:	8.12.49
 Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
@@ -22,6 +22,7 @@ BuildRequires:	protobuf-compiler
 BuildRequires:	pkgconfig(re2)
 BuildRequires:	pkgconfig(gtest)
 BuildRequires:	pkgconfig(absl_strings)
+BuildRequires:	pkgconfig(absl_container_common)
 %if %{with java}
 BuildRequires:	jdk-current
 BuildRequires:	ant
@@ -50,6 +51,7 @@ Group:		Development/C++ and C
 Requires:	%{libphonenumber} = %{EVRD}
 Requires:	%{libgeocoding} = %{EVRD}
 Requires:	pkgconfig(protobuf)
+Requires:	pkgconfig(absl_container_common)
 Provides:	phonenumber-devel = %{EVRD}
 
 %description -n %{devphonenumber}
