@@ -5,6 +5,8 @@
 %define devphonenumber %mklibname -d phonenumber
 %define libgeocoding %mklibname geocoding %{major}
 
+%global optflags %{optflags} -DPROTOBUF_USE_DLLS
+
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
 Version:	8.13.7
@@ -12,6 +14,7 @@ Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 Patch1:		libphonenumber-8.13.7-c++17.patch
+Patch2:		libphonenumber-8.13.7-linkage.patch
 License:	Apache 2.0
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(icu-uc)

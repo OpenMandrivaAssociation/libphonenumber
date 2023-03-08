@@ -1,0 +1,12 @@
+diff -up libphonenumber-8.13.7/cpp/CMakeLists.txt.omv~ libphonenumber-8.13.7/cpp/CMakeLists.txt
+--- libphonenumber-8.13.7/cpp/CMakeLists.txt.omv~	2023-03-08 23:41:27.984975869 +0100
++++ libphonenumber-8.13.7/cpp/CMakeLists.txt	2023-03-08 23:41:35.930048220 +0100
+@@ -433,7 +433,7 @@ include_directories ("src")
+ # Collate dependencies
+ #----------------------------------------------------------------
+ 
+-set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::node_hash_set absl::strings absl::synchronization)
++set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::node_hash_set absl::strings absl::synchronization -labsl_log_internal_check_op -labsl_log_internal_message)
+ 
+ if (USE_BOOST)
+   list (APPEND LIBRARY_DEPS ${Boost_LIBRARIES})
