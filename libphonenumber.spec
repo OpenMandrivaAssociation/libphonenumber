@@ -7,12 +7,11 @@
 
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
-Version:	8.13.3
+Version:	8.13.7
 Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
-Patch1:		libphonenumber-8.12.7-optional-static-libs.patch
-Patch2:		libphonenumber-8.12.40-system-absl.patch
+Patch1:		libphonenumber-8.13.7-c++17.patch
 License:	Apache 2.0
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(icu-uc)
@@ -21,6 +20,7 @@ BuildRequires:	pkgconfig(protobuf)
 BuildRequires:	protobuf-compiler
 BuildRequires:	pkgconfig(re2)
 BuildRequires:	pkgconfig(gtest)
+BuildRequires:	cmake(absl)
 BuildRequires:	pkgconfig(absl_strings)
 BuildRequires:	pkgconfig(absl_container_common)
 %if %{with java}
@@ -103,6 +103,7 @@ cp java/build/jar/*.jar %{buildroot}%{_datadir}/java
 %{_includedir}/phonenumbers
 %{_libdir}/libgeocoding.so
 %{_libdir}/libphonenumber.so
+%{_libdir}/cmake/libphonenumber
 
 %if %{with java}
 %files java
