@@ -10,3 +10,15 @@ diff -up libphonenumber-8.13.7/cpp/CMakeLists.txt.omv~ libphonenumber-8.13.7/cpp
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
  
+diff -up libphonenumber-8.13.7/tools/cpp/CMakeLists.txt.omv~ libphonenumber-8.13.7/tools/cpp/CMakeLists.txt
+--- libphonenumber-8.13.7/tools/cpp/CMakeLists.txt.omv~	2023-03-08 22:17:02.674675002 +0100
++++ libphonenumber-8.13.7/tools/cpp/CMakeLists.txt	2023-03-08 22:17:06.189708229 +0100
+@@ -18,7 +18,7 @@ cmake_minimum_required (VERSION 3.11)
+ 
+ # Pick the C++ standard to compile with.
+ # Abseil currently supports C++11, C++14, and C++17.
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ project (generate_geocoding_data)
