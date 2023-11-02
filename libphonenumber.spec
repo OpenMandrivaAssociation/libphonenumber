@@ -93,8 +93,10 @@ ant jar
 %install
 %make_install -C cpp/build
 
+%if %{with java}
 mkdir -p %{buildroot}%{_datadir}/java
 cp java/build/jar/*.jar %{buildroot}%{_datadir}/java
+%endif
 
 %files -n %{libphonenumber}
 %{_libdir}/libphonenumber.so.%{major}*
