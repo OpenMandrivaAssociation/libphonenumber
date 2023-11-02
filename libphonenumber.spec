@@ -1,4 +1,4 @@
-%bcond_without java
+%bcond_with java
 
 %define major %(echo %{version} |cut -d. -f1)
 %define libphonenumber %mklibname phonenumber %{major}
