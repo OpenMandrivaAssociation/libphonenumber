@@ -1,4 +1,4 @@
-%bcond_with java
+%bcond_without java
 
 %define major %(echo %{version} |cut -d. -f1)
 %define libphonenumber %mklibname phonenumber %{major}
@@ -29,6 +29,10 @@ BuildRequires:	pkgconfig(absl_container_common)
 BuildRequires:	jdk-current
 %if %{with java}
 BuildRequires:	ant
+# FIXME use system versions of those libraries or at least
+# build them from source, prebuilt binaries are evil
+Source1:	https://repo1.maven.org/maven2/junit/junit/4.13.1/junit-4.13.1.jar
+Source2:	https://repo1.maven.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar
 %endif
 
 %description
@@ -87,6 +91,8 @@ make -C cpp/build
 # merge the jar files into one.
 . %{_sysconfdir}/profile.d/90java.sh
 cd java
+mkdir -p lib
+cp %{S:1} %{S:2} lib/
 ant jar
 %endif
 
