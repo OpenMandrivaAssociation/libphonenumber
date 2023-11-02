@@ -26,8 +26,8 @@ BuildRequires:	pkgconfig(gtest)
 BuildRequires:	cmake(absl)
 BuildRequires:	pkgconfig(absl_strings)
 BuildRequires:	pkgconfig(absl_container_common)
-%if %{with java}
 BuildRequires:	jdk-current
+%if %{with java}
 BuildRequires:	ant
 %endif
 
