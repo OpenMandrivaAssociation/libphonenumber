@@ -1,7 +1,8 @@
 %bcond_without java
 
 %define major %(echo %{version} |cut -d. -f1)
-%define libphonenumber %mklibname phonenumber %{major}
+%define oldlibphonenumber %mklibname phonenumber %{major}
+%define libphonenumber %mklibname phonenumber
 %define devphonenumber %mklibname -d phonenumber
 %define libgeocoding %mklibname geocoding %{major}
 
@@ -9,8 +10,8 @@
 
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
-Version:	8.13.31
-Release:	4
+Version:	8.13.33
+Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 #Patch1:		libphonenumber-8.13.7-c++17.patch
@@ -41,6 +42,7 @@ Library for parsing, formatting, and validating international phone numbers.
 %package -n %{libphonenumber}
 Summary:	Library for parsing phone numbers
 Group:		System/Libraries
+%rename %{oldlibphonenumber}
 
 %description -n %{libphonenumber}
 Library for parsing phone numbers.
@@ -74,6 +76,10 @@ The phone number parsing library for Java.
 %prep
 %autosetup -p1
 cd cpp
+
+# Make absl great again
+sed -i -e '/project/aset(CMAKE_CXX_STANDARD 20)' CMakeLists.txt
+
 LDFLAGS="%{build_ldflags} -L." %cmake \
 	-DBUILD_STATIC_LIB:BOOL=OFF
 
