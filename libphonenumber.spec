@@ -1,17 +1,18 @@
 %bcond_without java
 
-%define major %(echo %{version} |cut -d. -f1)
+%define major 8
 %define oldlibphonenumber %mklibname phonenumber %{major}
 %define libphonenumber %mklibname phonenumber
 %define devphonenumber %mklibname -d phonenumber
-%define libgeocoding %mklibname geocoding %{major}
+%define oldlibgeocoding %mklibname geocoding %{major}
+%define libgeocoding %mklibname geocoding
 
 %global optflags %{optflags} -DPROTOBUF_USE_DLLS
 
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
-Version:	8.13.55
-Release:	4
+Version:	9.0.1
+Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 #Patch1:		libphonenumber-8.13.7-c++17.patch
@@ -50,6 +51,7 @@ Library for parsing phone numbers.
 %package -n %{libgeocoding}
 Summary:	Library for geo-coding phone numbers
 Group:		System/Libraries
+%rename %{oldlibgeocoding}
 
 %description -n %{libgeocoding}
 Library for geo-coding phone numbers.
@@ -96,10 +98,13 @@ make -C cpp/build
 # If we want to make it a module at some point, we have to
 # merge the jar files into one.
 . %{_sysconfdir}/profile.d/90java.sh
+cp tools/java/cpp-build/target/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar .
 cd java
 mkdir -p lib
 cp %{S:1} %{S:2} lib/
 ant jar
+cd ..
+cp cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar tools/java/cpp-build/target/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar
 %endif
 
 %install
