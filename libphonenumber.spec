@@ -17,6 +17,7 @@ Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 #Patch1:		libphonenumber-8.13.7-c++17.patch
 Patch2:		libphonenumber-8.13.7-linkage.patch
+Patch3:		boost-1.89.patch
 License:	Apache 2.0
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(icu-uc)
