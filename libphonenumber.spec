@@ -1,10 +1,10 @@
 %bcond_without java
 
-%define major 8
-%define oldlibphonenumber %mklibname phonenumber %{major}
+%define major 9
+%define oldlibphonenumber %mklibname phonenumber 8
 %define libphonenumber %mklibname phonenumber
 %define devphonenumber %mklibname -d phonenumber
-%define oldlibgeocoding %mklibname geocoding %{major}
+%define oldlibgeocoding %mklibname geocoding 8
 %define libgeocoding %mklibname geocoding
 
 %global optflags %{optflags} -DPROTOBUF_USE_DLLS
