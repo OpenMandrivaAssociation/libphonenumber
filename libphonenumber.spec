@@ -11,8 +11,8 @@
 
 Summary:	Library for parsing phone numbers
 Name:		libphonenumber
-Version:	9.0.1
-Release:	3
+Version:	9.0.13
+Release:	1
 Source0:	https://github.com/google/libphonenumber/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		libphonenumber-8.12.7-no-underlinking.patch
 #Patch1:		libphonenumber-8.13.7-c++17.patch
