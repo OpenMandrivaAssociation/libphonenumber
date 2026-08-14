@@ -1,4 +1,4 @@
 sources:
   junit-4.13.1.jar: cdd00374f1fee76b11e2a9d127405aa3f6be5b6a
-  libphonenumber-9.0.36.tar.gz: cc5242303e5fd7cb36a051188a522717eb45e232
   mockito-all-1.10.19.jar: 539df70269cc254a58cccc5d8e43286b4a73bf30
+  libphonenumber-9.0.37.tar.gz: aa32d3cb0825a90c5e85848eb39c7f22b9027982
